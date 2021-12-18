@@ -1,41 +1,151 @@
-# Deprecate ZSH_THEME_RANDOM_BLACKLIST
-if [[ -n "$ZSH_THEME_RANDOM_BLACKLIST" ]]; then
-  echo '[oh-my-zsh] ZSH_THEME_RANDOM_BLACKLIST is deprecated. Use `ZSH_THEME_RANDOM_IGNORED` instead.'
-  ZSH_THEME_RANDOM_IGNORED=($ZSH_THEME_RANDOM_BLACKLIST)
-  unset ZSH_THEME_RANDOM_BLACKLIST
-fi
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Make themes a unique array
-typeset -Ua themes
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+# pip packages path
+export PATH=/home/qdl/.local/bin:$PATH
 
-if [[ "${(t)ZSH_THEME_RANDOM_CANDIDATES}" = array && ${#ZSH_THEME_RANDOM_CANDIDATES[@]} -gt 0 ]]; then
-  # Use ZSH_THEME_RANDOM_CANDIDATES if properly defined
-  themes=(${(@)ZSH_THEME_RANDOM_CANDIDATES:#random})
-else
-  # Look for themes in $ZSH_CUSTOM and add only the theme name
-  themes=(
-    "$ZSH_CUSTOM"/themes/*.zsh-theme(N:t:r)
-  )
-  # Remove ignored themes from the list
-  for theme in random ${ZSH_THEME_RANDOM_IGNORED[@]}; do
-    themes=("${(@)themes:#$theme}")
-  done
-fi
 
-# Choose a theme out of the pool of candidates
-N=${#themes[@]}
-(( N = (RANDOM%N) + 1 ))
-RANDOM_THEME="${themes[$N]}"
-unset N themes theme
+# Execute a command every time Terminal is open
+fortune | lolcat
 
-# Source theme
-if [[ -f "$ZSH_CUSTOM/themes/$RANDOM_THEME.zsh-theme" ]]; then
-  source "$ZSH_CUSTOM/themes/$RANDOM_THEME.zsh-theme"
-else
-  echo "[oh-my-zsh] Random theme '${RANDOM_THEME}' not found"
-  return 1
-fi
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
-if [[ -z "$ZSH_THEME_RANDOM_QUIET" ]]; then
-  echo "[oh-my-zsh] Random theme '${RANDOM_THEME}' loaded"
-fi
+ZSH_THEME="random"
+# ZSH_THEME="dstufft"
+# ZSH_THEME="pygmalion"
+# ZSH_THEME="jaischeema"
+# ZSH_THEME="dieter"
+# ZSH_THEME="random"
+# ZSH_THEME="dogenpunk"
+# ZSH_THEME="robbyrussell"
+# ZSH_THEME="agnoster"
+# ZSH_THEME="ys"
+# ZSH_THEME="fox"
+# ZSH_THEME="dpoggi"
+# ZSH_THEME="jonathan"
+# ZSH_THEME="kolo"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+ZSH_THEME_RANDOM_IGNORED=(mgutz kiwi)
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# alias for pygmentize
+alias cats='pygmentize'
+
+# alias for xclip
+alias pwds='pwd | xclip -selection clipbord'
+
+# alias for /media/qdl/delinqu/
+alias delinqu='/media/qdl/delinqu/'
+
+# alias for trash
+# trash(){
+#    TRASH=/home/qdl/.local/share/Trash ;
+#    if [ ! -d "$TRASH" ]; then
+#        echo "创建垃圾回收站目录";
+#        mkdir $TRASH ;
+#    fi
+#
+#    str1=$@ ;
+#    str2=${str1##-* } ;
+#    mv $str2 $TRASH ;
+#}
+
+# alias rm=trash
+
+# alias for matlab 
+alias matlabcmd='matlab -nodesktop -nosplash -nojvm'
