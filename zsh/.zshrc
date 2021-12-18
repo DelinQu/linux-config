@@ -8,7 +8,7 @@ export PATH=/home/qdl/.local/bin:$PATH
 
 
 # Execute a command every time Terminal is open
-fortune
+fortune | lolcat
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
