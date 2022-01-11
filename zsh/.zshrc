@@ -16,6 +16,7 @@ fortune | lolcat
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
 ZSH_THEME="random"
+# ZSH_THEME="dstufft"
 # ZSH_THEME="pygmalion"
 # ZSH_THEME="jaischeema"
 # ZSH_THEME="dieter"
@@ -28,12 +29,15 @@ ZSH_THEME="random"
 # ZSH_THEME="dpoggi"
 # ZSH_THEME="jonathan"
 # ZSH_THEME="kolo"
+# ZSH_THEME="cloud"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# ZSH_THEME_RANDOM_CANDIDATES=( "dstufft" )
+
+ZSH_THEME_RANDOM_IGNORED=(mgutz kiwi Soliah clean smt xiong-chiamiov-plus)
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
