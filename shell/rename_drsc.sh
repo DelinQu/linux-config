@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Author: Gihan De Silva @  gihansblog.com
+# Author: qdl.cs@qq.com
 # rename script
 # rename.sh
 # sh rename_rs.sh png rs
