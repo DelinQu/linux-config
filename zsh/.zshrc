@@ -6,6 +6,13 @@ export ZSH=$HOME/.oh-my-zsh
 # pip packages path
 export PATH=/home/qdl/.local/bin:$PATH
 
+# SAMSUNG env
+SAMSUNG='/media/qdl/SAMSUNG'
+# flutter
+export PATH=$PATH:${SAMSUNG}/env/lin/flutter/bin
+# export android sdk path or flutter config --android-sdk "path to android sdk"
+# export ANDROID_SDK=${SAMSUNG}/env/lin/Android/Sdk
+
 
 # Execute a command every time Terminal is open
 fortune | lolcat
@@ -150,3 +157,19 @@ alias delinqu='/media/qdl/delinqu/'
 
 # alias for matlab 
 alias matlabcmd='matlab -nodesktop -nosplash -nojvm'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/qdl/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/qdl/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/qdl/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/qdl/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
