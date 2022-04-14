@@ -11,7 +11,7 @@ SAMSUNG='/media/qdl/SAMSUNG'
 # flutter
 export PATH=$PATH:${SAMSUNG}/env/lin/flutter/bin
 # export android sdk path or flutter config --android-sdk "path to android sdk"
-# export ANDROID_SDK=${SAMSUNG}/env/lin/Android/Sdk
+export ANDROID_SDK=${SAMSUNG}/env/lin/Android/Sdk
 
 
 # Execute a command every time Terminal is open
@@ -23,26 +23,12 @@ fortune | lolcat
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
 ZSH_THEME="random"
-# ZSH_THEME="dstufft"
-# ZSH_THEME="pygmalion"
-# ZSH_THEME="jaischeema"
-# ZSH_THEME="dieter"
-# ZSH_THEME="random"
-# ZSH_THEME="dogenpunk"
-# ZSH_THEME="robbyrussell"
-# ZSH_THEME="agnoster"
-# ZSH_THEME="ys"
-# ZSH_THEME="fox"
-# ZSH_THEME="dpoggi"
-# ZSH_THEME="jonathan"
-# ZSH_THEME="kolo"
-# ZSH_THEME="cloud"
-
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "dstufft" )
+ZSH_THEME_RANDOM_CANDIDATES=(sonicradish nicoulaj jnrowe pygmalion-virtualenv tjkirch_mod cloud sunrise obraun 
+	steeef agnoster refined skaro mira fino half-life jaischeema mlh fox arrow)
 
 ZSH_THEME_RANDOM_IGNORED=(mgutz kiwi Soliah clean smt xiong-chiamiov-plus)
 
@@ -140,6 +126,12 @@ alias pwds='pwd | xclip -selection clipbord'
 # alias for /media/qdl/delinqu/
 alias delinqu='/media/qdl/delinqu/'
 
+# alias for file count
+alias lc='ls | wc -l'
+
+# alias for clock
+alias clk='while true; do tput clear; date +"%H : %M : %S" | figlet | lolcat; sleep 1; done'
+
 # alias for trash
 # trash(){
 #    TRASH=/home/qdl/.local/share/Trash ;
@@ -156,7 +148,7 @@ alias delinqu='/media/qdl/delinqu/'
 # alias rm=trash
 
 # alias for matlab 
-alias matlabcmd='matlab -nodesktop -nosplash -nojvm'
+alias matlabcmd='matlab -nodesktop -nosplash'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -173,3 +165,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# PKG
+export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig/opencv4.pc
